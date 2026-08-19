@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outsource Your Boring Tasks</title>
+    <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Parkinsans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #001A33;
+            --card-bg: rgba(0, 40, 80, 0.5); /* Lighter, milkier glass */
+            --border-subtle: rgba(212, 175, 55, 0.12);
+            --border-highlight: rgba(212, 175, 55, 0.3); /* For top edge pop */
+            --text-primary: #EDEADE;
+            --text-muted: #BACEE9; /* Slightly brighter muted tone */
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #E5C158;
+            --max-width: 720px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Subtle geometric pattern overlay */
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+            padding-top: 4px; /* Space for progress bar */
+        }
+
+        /* Top Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #fff);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem 8rem 1.5rem;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 4.2rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.8rem;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Hero Graphic Styling */
+        .hero-graphic {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-graphic svg {
+            width: 100px;
+            height: auto;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 2rem 0 4rem 0;
+        }
+
+        .cta-container {
+            margin: 3rem 0;
+        }
+
+        /* Enhanced Button */
+        .btn-gold {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), #C19A2B);
+            color: #000;
+            font-family: 'Parkinsans', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
+        }
+
+        /* Supercharged Glassmorphism Cards */
+        .glass-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        /* List Styling */
+        ul.example-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.example-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        ul.example-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Numbered Steps */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
+        }
+
+        .steps-list li span.step-num {
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            opacity: 0.7;
+        }
+
+        /* Decorative Divider */
+        .decorative-hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
+            margin: 4rem 0;
+        }
+
+        /* Closing Section */
+        .closing-section {
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem 6rem 1rem;
+            }
+            .glass-box {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-graphic">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="10" width="60" height="40" rx="3" ry="3"/>
+                    <path d="M7 15h50v30H7z"/>
+                    <path d="M28 55h8M32 50v5"/>
+                    <circle cx="45" cy="25" r="2"/>
+                    <circle cx="51" cy="25" r="2"/>
+                    <circle cx="57" cy="25" r="2"/>
+                </svg>
+            </div>
+            <h1>Got a boring job you keep putting off?<br><span style="color: var(--accent-gold); font-style: italic;">Give it to me.</span></h1>
+            <p class="lead">I'll handle repetitive, tedious tasks for you so you can spend your time on things that actually matter.</p>
+            
+            <div class="cta-container">
+                <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">Give Me Your Boring Job</a>
+            </div>
+        </div>
+
+        <hr class="decorative-hr">
+
+        <!-- What Can I Do Section -->
+        <h2>What can I do?</h2>
+        <p>Any creative or professional project you just won't enjoy doing yourself.</p>
+
+        <!-- Glass Box with Examples -->
+        <div class="glass-box">
+            <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1.5rem; font-size: 1.2rem;">Examples:</p>
+            <ul class="example-list">
+                <li>Turn this spreadsheet into a clean, navigable, and comprehensible one</li>
+                <li>Transcribe this audio or YouTube video into clean, well formatted text</li>
+                <li>Translate this text to French or Spanish or German (Basically any language that uses the Latin ABCs. I'll get it done, don't ask how)</li>
+                <li>Turn this article into social media carousels or reel scripts</li>
+                <li>Clean up and format this document</li>
+                <li>Research these 20 things and provide me a word document report on it</li>
+                <li>Enter this data into a comprehensive and intuitive spreadsheet</li>
+                <li>Write a description for this product/project landing page</li>
+                <li>Format this information into digestible and presentable text</li>
+                <li>And many more boring stuff that just aren't worth your time and mental energy.</li>
+            </ul>
+        </div>
+
+        <h2>Not sure if I'll do it (or can do it)?</h2>
+        <p>Just send me the job. And so long as it's legal, ethical, reasonably simple, and remotely doable, I'll tell you whether I can handle it or not.</p>
+
+        <h2>Why am I doing this?</h2>
+        <p>Hi. My name is Bright Borngreat (yes, that's my actual government name). I'm 18 years old.</p>
+        <p>I recently graduated high school, and I'm taking some time off to figure out what comes next. My essentials like food and housing are covered by my mom (for now), but I need to cover my own internet and day-to-day expenses.</p>
+        <p>So rather than ask anyone for money, I figured I'd make myself useful instead.</p>
+        <p>If you've got something tedious sitting on your to-do list, I'll do it for you.</p>
+
+        <!-- Popping Quote Card -->
+        <div class="glass-box" style="text-align: center; border-color: var(--border-highlight);">
+            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">You get the annoying task off your plate.</p>
+            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">I get paid a few pennies for the work.</p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent-gold); margin-top: 1.5rem; font-weight: 700;">Fair trade.</p>
+        </div>
+
+        <h2>So if you've got a tedious job you just don't wanna do yourself, the next step is simple;</h2>
+        
+        <ul class="steps-list">
+            <li>
+                <span class="step-num">1.</span>
+                Click that big juicy “I Have A Job For You” button.
+            </li>
+            <li>
+                <span class="step-num">2.</span>
+                You'll be redirected to a page that will walk you through how to submit your task and receive your deliverables.
+            </li>
+            <li>
+                <span class="step-num">3.</span>
+                I'll handle the task, hand over the results to you, and we'll either say our goodbyes (if you want us to) or become really good friends.
+            </li>
+        </ul>
+
+        <!-- Closing CTA -->
+        <div class="closing-section" id="checkout">
+            <h2 style="border: none; margin-bottom: 1rem;">Super simple.</h2>
+            <p class="lead" style="margin-bottom: 2.5rem;">Enough yapping on this page. Click that button, and let's meet on the other side.</p>
+            <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
+        </div>
+
+    </div>
+
+    <!-- Vanilla JS for Scroll Progress Bar -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
