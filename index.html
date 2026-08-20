@@ -100,16 +100,20 @@
         .hero-graphic {
             margin-bottom: 2rem;
             opacity: 0.9;
+            width: 140px;
+            height: 140px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
         }
         
-        .hero-graphic svg {
-            width: 100px;
-            height: auto;
-            fill: none;
-            stroke: var(--accent-gold);
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .hero-graphic img {
+            width: 300%;
+            height: 300%;
+            object-fit: cover;
+            margin-top: -100%;
+            margin-left: -100%;
+            display: block;
         }
 
         /* Hero Section */
@@ -246,14 +250,7 @@
         <!-- Hero Section -->
         <div class="hero-section">
             <div class="hero-graphic">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="10" width="60" height="40" rx="3" ry="3"/>
-                    <path d="M7 15h50v30H7z"/>
-                    <path d="M28 55h8M32 50v5"/>
-                    <circle cx="45" cy="25" r="2"/>
-                    <circle cx="51" cy="25" r="2"/>
-                    <circle cx="57" cy="25" r="2"/>
-                </svg>
+                <img src="logo.webp" alt="Logo">
             </div>
             <h1>Got a boring job you keep putting off?<br><span style="color: var(--accent-gold); font-style: italic;">Give it to me.</span></h1>
             <p class="lead">I'll handle repetitive, tedious tasks for you so you can spend your time on things that actually matter.</p>
