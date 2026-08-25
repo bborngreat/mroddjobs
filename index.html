@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outsource Your Boring Tasks</title>
+    <title>Onboarding - Outsource Your Boring Tasks</title>
     <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,23 +65,24 @@
         /* Typography */
         h1, h2, h3 {
             font-family: 'Cormorant Garamond', serif;
-            color: var(--accent-gold);
+            color: var(--text-primary);
             font-weight: 700;
             letter-spacing: -0.01em;
         }
 
         h1 {
-            font-size: clamp(3rem, 6vw, 4.2rem);
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
         }
 
         h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-top: 4rem;
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            margin-top: 3.5rem;
+            margin-bottom: 1.2rem;
             border-bottom: 2px solid var(--border-subtle);
             padding-bottom: 0.75rem;
+            color: var(--accent-gold);
         }
 
         p {
@@ -89,64 +90,48 @@
         }
 
         .lead {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Scaled down so it doesn't compete with the main heading */
             color: var(--text-muted);
             margin-bottom: 3rem;
-            line-height: 1.7;
+            line-height: 1.8;
             font-weight: 300;
         }
 
-        /* Hero Graphic Styling */
-        .hero-graphic {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            width: 140px;
-            height: 140px;
-            margin-left: auto;
-            margin-right: auto;
-            overflow: hidden;
-        }
-        
-        .hero-graphic img {
-            width: 300%;
-            height: 300%;
-            object-fit: cover;
-            margin-top: -100%;
-            margin-left: -100%;
-            display: block;
-        }
-
-        /* Hero Section */
+        /* Hero Section & Graphic */
         .hero-section {
             text-align: center;
-            padding: 2rem 0 4rem 0;
+            padding: 2rem 0 3rem 0;
         }
 
-        .cta-container {
-            margin: 3rem 0;
+        .hero-graphic {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem auto;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            animation: pulse-glow 3s infinite ease-in-out;
         }
 
-        /* Enhanced Button */
-        .btn-gold {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-gold), #C19A2B);
-            color: #000;
-            font-family: 'Parkinsans', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding: 1.1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        .hero-graphic svg {
+            width: 44px;
+            height: 44px;
+            fill: var(--accent-gold);
         }
 
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(212, 175, 55, 0.3);
+                transform: scale(1.03);
+            }
         }
 
         /* Supercharged Glassmorphism Cards */
@@ -158,13 +143,13 @@
             border-top: 1px solid var(--border-highlight);
             border-radius: 20px;
             padding: 2.5rem;
-            margin: 3rem 0;
+            margin: 2.5rem 0;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             position: relative;
         }
 
         /* List Styling */
-        ul.example-list {
+        ul.example-list, ul.plain-list {
             list-style: none;
             padding-left: 0;
         }
@@ -185,20 +170,20 @@
             font-weight: bold;
         }
 
-        /* Numbered Steps */
-        .steps-list {
+        /* Numbered Steps for Process */
+        .process-steps {
             list-style: none;
             padding: 0;
         }
 
-        .steps-list li {
+        .process-steps > li {
             position: relative;
             padding-left: 3.5rem;
-            margin-bottom: 2rem;
-            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
         }
 
-        .steps-list li span.step-num {
+        .process-steps > li > span.step-num {
             position: absolute;
             left: 0;
             top: -5px;
@@ -206,7 +191,86 @@
             font-size: 2.5rem;
             color: var(--accent-gold);
             font-weight: 700;
-            opacity: 0.7;
+            opacity: 0.8;
+        }
+
+        .process-steps ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .process-steps ul li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .process-steps ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        /* Contact Row Layout (Designer Note: Side by side with respective icons) */
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-highlight);
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .contact-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Example Sub-box for revisions */
+        .example-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--accent-gold);
+            padding: 1rem 1.2rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .example-box.appropriate {
+            border-color: #4CAF50;
+        }
+
+        .example-box.inappropriate {
+            border-color: #E57373;
         }
 
         /* Decorative Divider */
@@ -214,13 +278,13 @@
             border: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
-            margin: 4rem 0;
+            margin: 3.5rem 0;
         }
 
         /* Closing Section */
         .closing-section {
             text-align: center;
-            margin-top: 5rem;
+            margin-top: 4rem;
         }
 
         /* Responsive Breakpoints */
@@ -232,10 +296,15 @@
                 padding: 1.5rem;
             }
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            h2 {
-                font-size: 2rem;
+            .contact-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -249,77 +318,179 @@
         
         <!-- Hero Section -->
         <div class="hero-section">
+            <!-- Top Graphic Element -->
             <div class="hero-graphic">
-                <img src="logo.webp" alt="Logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
             </div>
-            <h1>Got a boring job on your to-do list that you keep putting off?<br><span style="color: var(--text-primary); font-style: italic;">Give it to me.</span></h1>
-            <p class="lead">I'll handle the repetitive, tedious, and annoying digital tasks for you so you can spend your time on things that actually matter.</p>
-            
-            <div class="cta-container">
-                <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">Give Me Your Boring Job</a>
-            </div>
+            <h1>Your Boring Job Is Now My Problem</h1>
+            <p class="lead">Welcome. You did it.<br> You found something boring, repetitive, or annoying enough to hand it off to someone else.<br> <br>That someone is me.<br>Thanks for trusting me with it. Here's everything you need to know about how we'll work together.</p>
         </div>
 
         <hr class="decorative-hr">
 
-        <!-- What Can I Do Section -->
-        <h2>What can I do?</h2>
-        <p>Any creative or professional project you just won't enjoy doing yourself.</p>
-
-        <!-- Glass Box with Examples -->
+        <!-- Section A -->
+        <h2>A. What I Can and Can't Do</h2>
+        <p>I'm happy to take on boring, repetitive online work that I can reasonably complete remotely.</p>
+        
         <div class="glass-box">
-            <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1.5rem; font-size: 1.2rem;">Examples:</p>
+            <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1rem;">Examples include:</p>
             <ul class="example-list">
-                <li>Turning raw data into appealing and understandable spreadsheets</li>
-                <li>Transcribing audio or YouTube videos into clean, well formatted text</li>
-                <li>Translating text to French, Spanish, German and basically any language that uses the Latin ABCs</li>
-                <li>Turning long articles or YouTube videos into condensed, actionable briefs and summaries</li>
-                <li>Proofreading, editing, and formatting raw text into polished documents</li>
-                <li>Doing deep research on a topic and providing you with a detailed, comprehensive report</li>
-                <li>Entering your raw data from screenshots or random links into a centralized and intuitive dashboard</li>
-                <li>Building mini-web apps for boosting your productivity, tracking life events, or solving specific problems in your life</li>
-                <li>Plus many other boring chores that just aren't worth your time and mental energy.</li>
+                <li>Data entry and organization</li>
+                <li>Research</li>
+                <li>Transcription</li>
+                <li>Translation</li>
+                <li>Document formatting</li>
+                <li>Content briefs/summaries</li>
+                <li>Spreadsheet cleanup</li>
+                <li>Simple web app development</li>
+                <li>Other repetitive digital tasks</li>
             </ul>
         </div>
 
-        <h2>Not sure if I'll do it (or can do it)?</h2>
-        <p>So long as it's legal, ethical, reasonably simple, and can be done remotely, just send it to me. And I'll tell you immediately whether I can handle it or not.</p>
-
-        <h2>Why am I doing this?</h2>
-        <p>Hi! My name is Bright Borngreat. I'm 18 years old, and I recently finished high school.</p>
-        <p>But instead of rushing straight into college or getting a slave-wage job, I'm currently taking some time to figure out what comes next.</p>
-        <p>My essentials like food and shelter are covered by my mom (for now), but I need to cover my own internet and day-to-day expenses.</p>
-        <p>So rather than go around begging for money, I figured I'd make myself useful instead. If you've got something tedious sitting on your to-do list, I'll do it for you.</p>
-
-        <!-- Popping Quote Card -->
-        <div class="glass-box" style="text-align: center; border-color: var(--border-highlight);">
-            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">You get the annoying task off your plate and free up time to do more fun stuff with your days.</p>
-            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">And in return, I get paid a few pennies for the work.</p>
-            <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent-gold); margin-top: 1.5rem; font-weight: 700;">It's a win-win for everyone!</p>
-        </div>
-
-        <h2>So if you've got a tedious job you just don't wanna do yourself, the next step is simple;</h2>
+        <p>If you're unsure whether your task qualifies, ask me.</p>
         
-        <ul class="steps-list">
+        <p style="color: var(--text-muted); font-weight: 500;">I won't accept work that is illegal, fraudulent, deceptive, unsafe, or requires access to accounts or information that I shouldn't have.</p>
+
+        <hr class="decorative-hr">
+
+        <!-- Section B -->
+        <h2>B. How We’ll Work Together</h2>
+
+        <ul class="process-steps">
             <li>
                 <span class="step-num">1.</span>
-                Click that big juicy “I Have A Job For You” button.
+                <strong>Send the work through any of my contact options;</strong>
+                <ul>
+                    <li>Instagram DM</li>
+                    <li>WhatsApp</li>
+                    <li>Email</li>
+                </ul>
+                <p style="margin-top: 1rem;">Pick whichever medium you're most comfortable with, and send me the work description.</p>
+                
+                <!-- Side-by-side contact buttons following designer note -->
+                <div class="contact-row">
+                    <a href="https://www.instagram.com/mr.oddjobs_?igsi=bmZhaGYydDQxdXZy" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://wa.me/qr/OEQPRPHJN63GO1" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="mailto:borngreatbright019@gmail.com" class="contact-btn">
+                        <svg viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.717v15.43h24v-15.43l-12 9.717z"/></svg>
+                        Email
+                    </a>
+                </div>
             </li>
+
             <li>
                 <span class="step-num">2.</span>
-                You'll be redirected to a page that will walk you through how to submit your task and receive your results once I'm done.
+                <strong>I’ll reply and confirm to you right away whether the job is something I can do.</strong> From there, we'll conclude on how many pennies I'll get for the job.
+                <p style="margin-top: 1rem; color: var(--text-muted);">My service is obviously very specific to what you want, so I can't spell out a definite upfront price here. It can range from $5 for low effort stuff like document formatting, to around $50 for stuff like web app development or advanced spreadsheets.</p>
             </li>
+
             <li>
                 <span class="step-num">3.</span>
-                I'll handle the task, hand over the results to you, and we'll either say our goodbyes (if you want us to) or become really good friends.
+                <strong>Once that's done, you'll send me everything I need to get started.</strong>
+                <p style="margin-top: 1rem;">You can send files, screenshots, links, instructions, examples, references, or anything else relevant.</p>
+                <p><strong>The golden rule here is to tell me exactly what "done" looks like.</strong></p>
+                <p>If you have a specific format, deadline, naming convention, tone, or other requirement, tell me upfront.</p>
+                <p>The clearer the instructions, the less back-and-forth we'll need.</p>
+            </li>
+
+            <li>
+                <span class="step-num">4.</span>
+                <strong>Once I receive your materials, I'll review them and confirm:</strong>
+                <ul>
+                    <li>That I have everything I need</li>
+                    <li>What exactly I'll be delivering</li>
+                    <li>When you can expect it</li>
+                </ul>
+                <p style="margin-top: 1rem;">If something is unclear or missing, I'll ask before starting.</p>
+            </li>
+
+            <li>
+                <span class="step-num">5.</span>
+                <strong>I'll notify you once the project is completed, and send you the details to make payment. Once payment is confirmed, your completed work will be sent through the agreed communication channel, or delivered using a download link.</strong>
+                <p style="margin-top: 1rem;">Standard turnaround: 48 hours.</p>
+                <p>Some jobs will be completed sooner. Larger or complicated jobs may take longer, in which case I'll tell you before I begin.</p>
+            </li>
+
+            <li>
+                <span class="step-num">6.</span>
+                <strong>If I've misunderstood your instructions, or missed something that was part of your original request, I'll fix it.</strong>
+                <p style="margin-top: 1rem;">Your job should come back exactly the way you expected it to.</p>
+                <p>Therefore, one reasonable revision is included where appropriate. An appropriate revision means adjusting the original job.</p>
+                <p>It does not mean adding an entirely new job after delivery.</p>
+                <p>For example:</p>
+                <p>An appropriate revision request is something like:</p>
+                <div class="example-box appropriate">
+                    "Can you change the document font to match the example I originally provided?"
+                </div>
+                <p>Or</p>
+                <div class="example-box appropriate">
+                    "Can you make the dark mode be the default theme of the app"
+                </div>
+                <p>And an inappropriate one is like:</p>
+                <div class="example-box inappropriate">
+                    "Actually, can you also turn the whole YouTube transcript into a beautiful 30-page PDF I can sell on the internet?"
+                </div>
+                <p style="margin-top: 1rem;">If you've got something new, just ask me. I'll tell you what how many extra coins I’ll take for that new task, and get right back to work!</p>
             </li>
         </ul>
 
-        <!-- Closing CTA -->
-        <div class="closing-section" id="checkout">
-            <h2 style="border: none; margin-bottom: 1rem;">Super simple.</h2>
-            <p class="lead" style="margin-bottom: 2.5rem;">Enough yapping on this page. Click that button, and let's meet each other on the other side.</p>
-            <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
+        <hr class="decorative-hr">
+
+        <!-- Section C -->
+        <h2>C. Communication</h2>
+        <p>You don't need to schedule a call or meeting with me.</p>
+        <p>Just send me the task, give me the instructions, and I'll handle it asynchronously.</p>
+        <p>For normal communication (say extra context, examples, or requests), use the channel you sent the job description through.</p>
+        <p>I'll generally respond within 10-60 minutes regardless of what day it is, unless it's nighttime.</p>
+
+        <hr class="decorative-hr">
+
+        <!-- Section D -->
+        <h2>D. A Small Request From Me</h2>
+        <p>Please don't send passwords or unnecessary sensitive information.</p>
+        <p>If I need access to something, we'll figure out the safest way to provide it.</p>
+        <p>And if your task contains confidential information from the get-go, give me a heads up before sending anything to me.</p>
+
+        <hr class="decorative-hr">
+
+        <!-- Closing Section -->
+        <div class="closing-section">
+            <h2 style="border: none; margin-bottom: 1rem;">That's It.</h2>
+            <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 2;">
+                No complicated project-management software.<br>
+                No unnecessary Zoom calls.<br>
+                No 14-step onboarding process.
+            </p>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--accent-gold); margin: 2rem 0; font-weight: 700;">
+                You give me the boring thing.<br>
+                I do the boring thing.<br>
+                You get your time back.
+            </p>
+            <p class="lead" style="margin-bottom: 2rem;">Now click the button you're most comfortable with below, and send me the work.</p>
+
+            <!-- Bottom Contact Buttons matching the prompt requirement -->
+            <div class="contact-row" style="margin-top: 2rem;">
+                <a href="https://www.instagram.com/mr.oddjobs_?igsi=bmZhaGYydDQxdXZy" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Instagram
+                </a>
+                <a href="https://wa.me/qr/OEQPRPHJN63GO1" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:borngreatbright019@gmail.com" class="contact-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.717v15.43h24v-15.43l-12 9.717z"/></svg>
+                    Email
+                </a>
+            </div>
         </div>
 
     </div>
