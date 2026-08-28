@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Outsource Your Boring Tasks</title>
+    <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Parkinsans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #001A33;
+            --card-bg: rgba(0, 40, 80, 0.5);
+            --border-subtle: rgba(212, 175, 55, 0.12);
+            --border-highlight: rgba(212, 175, 55, 0.3);
+            --text-primary: #EDEADE;
+            --text-muted: #BACEE9;
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #E5C158;
+            --max-width: 720px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+            padding-top: 4px;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #fff);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem 8rem 1.5rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 2rem 0 2rem 0;
+        }
+
+        .hero-graphic {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem auto;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+
+        .hero-graphic svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--accent-gold);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(212, 175, 55, 0.3);
+                transform: scale(1.03);
+            }
+        }
+
+        /* FAQ Accordion Styling */
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item.active {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-gold);
+        }
+
+        .faq-question svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent-gold);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s ease-out, padding 0.35s ease-out;
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .faq-item.active .faq-answer {
+            grid-template-rows: 1fr;
+            padding: 0 1.5rem 1.8rem 1.5rem;
+        }
+
+        .faq-answer-content {
+            overflow: hidden;
+        }
+
+        .faq-answer a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        .faq-answer a:hover {
+            color: var(--accent-gold-hover);
+        }
+
+        .decorative-hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
+            margin: 3.5rem 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem 6rem 1rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+                padding: 1.2rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 1.2rem 1.5rem 1.2rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div class="container">
+        
+        <div class="hero-section">
+            <div class="hero-graphic">
+                <!-- Clean, standard question mark SVG -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/>
+                </svg>
+            </div>
+            <h1>FREQUENTLY ASKED QUESTIONS</h1>
+            <p class="lead">Got questions about how this works, who I am, or how your data is handled? Everything you need to know is right here.</p>
+        </div>
+
+        <div class="faq-container">
+            
+            <!-- Question 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>1. Is your name really Bright Borngreat?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes. My actual legal name is Bright Borngreat. My ‘birth’ name is Mohammed Abubakr Sadiq. But I converted to Christianity very young (basically before I could eat or crawl).</p>
+                        <p>Bright Borngreat, therefore, was a name my mom adopted for me, and is not my father's name or his family name.</p>
+                        <p>I still use my birth name as middle names, but for official purposes and simplicity, Bright Borngreat it is!</p>
+                        <p>I know my name sounds like a pseudonym, but it's not.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>2. How will the data I share with you be handled?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>As discussed on previous pages, I only ask for or collect relevant, non-confidential information that I need to successfully deliver my services.</p>
+                        <p>For a more in-depth explanation of what information I do (and don't) collect, how I use and handle that information, and how long I keep it, refer to my <a href="privacy-policy.html">privacy policy</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>3. Why should I trust you instead of an expert for my task?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>I'm in no way an expert, and I won't pretend to be. All my services, as you can tell, are general, tedious, and require very little specialization or credentials to do well.</p>
+                        <p>Hence, having an “expert” charge you predatory rates or put you on a gigantic wait-list is unnecessary and a waste of your resources.</p>
+                        <p>I, on the other hand, am free, very willing, and have a reputation to protect. I cannot afford to do sloppy work because all it takes is one negative review to shut my little operation down.</p>
+                        <p>Therefore, I'll be committed to provide you the best possible results, as opposed to an established credentialed expert, for whom you're just another name on a long spreadsheet of clients.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>4. What kind of information is requested or avoided?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>As discussed on previous pages, only non-confidential information will be requested for my services.</p>
+                        <p>For a more in-depth explanation of what I collect (and what I don't), and how I handle that data, please refer to my <a href="privacy-policy.html">privacy policy</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>5. How do I get a refund if I'm not satisfied?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>As you can already tell, I'm a tiny, relatively slim one-man operation. And hence, I lack the sophisticated tech stack required to process stuff like refunds and cashbacks seamlessly and reliably.</p>
+                        <p>That's why I have an explicit preview step, where I send you the full complete work to scrutinize and confirm satisfaction or ask for revisions before money ever exchanges hands.</p>
+                        <p>That way, you do not pay until you're absolutely certain that you're getting exactly what you want to see.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="faq.html">FAQs</a> |
+            <a href="onboarding.html">Onboarding</a>
+            <p style="margin-top: 1rem;">Bright Borngreat &copy; <span id="current-year"></span>. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Dynamic copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // FAQ Accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            questionBtn.addEventListener('click', () => {
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

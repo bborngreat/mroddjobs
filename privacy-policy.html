@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Outsource Your Boring Tasks</title>
+    <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Parkinsans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #001A33;
+            --card-bg: rgba(0, 40, 80, 0.5);
+            --border-subtle: rgba(212, 175, 55, 0.12);
+            --border-highlight: rgba(212, 175, 55, 0.3);
+            --text-primary: #EDEADE;
+            --text-muted: #BACEE9;
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #E5C158;
+            --max-width: 780px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            overflow-x: hidden;
+            padding-top: 4px;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #fff);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem 8rem 1.5rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-top: 2.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: var(--accent-gold-hover);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 2rem 0 1.5rem 0;
+        }
+
+        .hero-graphic {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+
+        .hero-graphic svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--accent-gold);
+        }
+
+        .last-updated {
+            font-size: 0.95rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .policy-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(212, 175, 55, 0.3);
+                transform: scale(1.03);
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem 6rem 1rem;
+            }
+            .policy-card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <div class="container">
+        
+        <div class="hero-section">
+            <div class="hero-graphic">
+                <!-- Shield / Privacy Icon -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+            </div>
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: August 28, 2026</p>
+        </div>
+
+        <div class="policy-card">
+            <p>This Privacy Policy explains how I handle information when you contact me or use my services through this website.</p>
+            
+            <p>I provide what many would call “small freelance and digital services” such as research, transcription, spreadsheet work, document formatting, and simple web development. I aim to collect and handle only the information necessary to communicate with you and complete your requested work.</p>
+
+            <h2>1. Information I May Receive</h2>
+            <p>Depending on the service you request, you may provide information such as:</p>
+            <ul>
+                <li>Your name or preferred name</li>
+                <li>Your email address or other contact information</li>
+                <li>Details about the task you want completed</li>
+                <li>Files or documents that you voluntarily provide as context for a specific job</li>
+                <li>Information contained within those files that is necessary for completing the task</li>
+            </ul>
+            <p><strong>You should not send information that I do not need to complete your job.</strong></p>
+
+            <h2>2. Information I Do Not Request</h2>
+            <p>For your security, I do not request or intentionally collect:</p>
+            <ul>
+                <li>Passwords</li>
+                <li>Login credentials</li>
+                <li>Authentication or 2FA codes</li>
+                <li>Banking or card details</li>
+                <li>Government identification documents</li>
+                <li>Private security questions or answers</li>
+                <li>Cryptocurrency wallet seed phrases or private keys</li>
+                <li>Other highly sensitive credentials</li>
+            </ul>
+            <p>If a task appears to require this type of information, I will politely decline the task or ask you to use a safer method that does not require me to receive your credentials.</p>
+
+            <h2>3. How Information Is Used</h2>
+            <p>Information you provide may be used only as reasonably necessary to:</p>
+            <ul>
+                <li>Respond to your messages</li>
+                <li>Understand and complete your requested work</li>
+                <li>Deliver completed work</li>
+                <li>Communicate with you about a current or previous job</li>
+                <li>Resolve problems relating to a service you requested</li>
+                <li>Keep basic records necessary to run the business</li>
+            </ul>
+            <p>I do not sell your personal information.</p>
+            <p>I do not use client files or personal information for unrelated purposes.</p>
+
+            <h2>4. Files and Client Information</h2>
+            <p>If you provide a file for me to work on, I will treat it as confidential and use it only for the purpose for which you provided it.</p>
+            <p>Please remove unnecessary sensitive or confidential information before sending a file whenever possible.</p>
+            <p>For example, if you need spreadsheet formatting, you should consider removing passwords, financial information, identification numbers, or other information that is not necessary for the task.</p>
+
+            <h2>5. Access to Accounts</h2>
+            <p>Whenever possible, I work from files or information supplied by the client rather than accessing the client's personal accounts.</p>
+            <p>I do not ask clients to provide their passwords.</p>
+            <p>If a particular task genuinely requires access to a service, I will first discuss a safer alternative where possible, such as a temporary account, limited-permission account, shared file, or client-side action.</p>
+            <p>If there is no reasonably safe way to complete the task without receiving sensitive credentials, I will simply decline to accept that task.</p>
+            <p><strong>You should never send a password or authentication code to me.</strong></p>
+
+            <h2>6. Sharing Information</h2>
+            <p>I do not sell or rent client information.</p>
+            <p>I will not intentionally share your private files or personal information with other people unless:</p>
+            <ul>
+                <li>You specifically ask me to do so;</li>
+                <li>It is necessary to use a service or tool to complete the work and you have been informed beforehand; or</li>
+                <li>Disclosure is required or permitted by law.</li>
+            </ul>
+            <p>Where I need to use a third-party service to complete your requested work, I will try to limit the information shared to what is actually necessary for that service.</p>
+
+            <h2>7. Data Retention</h2>
+            <p>I aim to keep client information only for as long as reasonably necessary.</p>
+            <p>After a job is completed, files and information that are no longer needed should be deleted or discarded where reasonably practical.</p>
+            <p>Some basic communication or transaction records may need to be retained for legitimate administrative, accounting, dispute-resolution, security, or legal purposes.</p>
+            <p>If you would like me to delete information that is no longer necessary for these purposes, you can contact me and I will consider the request.</p>
+
+            <h2>8. Third-Party Services</h2>
+            <p>This website and my delivery process may use third-party services such as hosting, forms, email, payment providers, file-sharing services, or other tools.</p>
+            <p>Those services may process information according to their own privacy policies.</p>
+            <p>I will try to use reputable services and avoid sending unnecessary personal information to third parties.</p>
+            <p>Some of these services may operate outside Ghana. This means that information you provide may sometimes be processed or stored in another country.</p>
+
+            <h2>9. Children's Information</h2>
+            <p>My services are intended for general clients and are not specifically directed toward children.</p>
+            <p>Please do not provide unnecessary information about children or minors when submitting a task.</p>
+            <p>If information about a child is genuinely necessary for a particular task, please provide only the minimum information needed to complete that task.</p>
+
+            <h2>10. Your Responsibility</h2>
+            <p>Please provide only the information that is reasonably necessary for me to complete your requested service.</p>
+            <p>You are responsible for making sure that you have the right or permission to provide any files, documents, personal information, or other materials that you send to me.</p>
+            <p>For example, please do not send me somebody else's private information simply because it happens to be contained in a document you want edited or formatted unless you have a legitimate reason and the necessary permission to do so.</p>
+            <p>The less unnecessary information you send, the less information there is for me to handle.</p>
+
+            <h2>11. Security</h2>
+            <p>I take reasonable steps to protect the information I receive from unauthorised access, loss, misuse, alteration, or disclosure.</p>
+            <p>However, no method of sending or storing information online is completely risk-free.</p>
+            <p>Because of this, I cannot promise that information will be 100% secure in every possible situation.</p>
+            <p>If you believe that information you provided to me has been accessed, disclosed, or handled improperly, please contact me as soon as possible so I can investigate the issue and take appropriate action.</p>
+
+            <h2>12. Your Privacy Rights</h2>
+            <p>Depending on the circumstances and applicable law, you may have rights regarding the personal information I hold about you.</p>
+            <p>These may include the right to:</p>
+            <ul>
+                <li>Ask what personal information I hold about you;</li>
+                <li>Request that inaccurate information be corrected;</li>
+                <li>Ask for information to be deleted where there is no legitimate reason for me to keep it;</li>
+                <li>Object to certain ways your information is being used;</li>
+                <li>Withdraw consent where I am relying on your consent to process information; and</li>
+                <li>Ask questions about how your information is being handled.</li>
+            </ul>
+            <p>These rights are not necessarily absolute, and there may be situations where I am legally required or permitted to retain certain information.</p>
+            <p>If you want to exercise one of these rights, simply contact me using the contact details provided on this website.</p>
+            <p>I may need to verify that the request is actually coming from you before making changes to or providing information about your personal data.</p>
+
+            <h2>13. Cookies and Website Technology</h2>
+            <p>This website may use cookies or similar technologies provided by the website itself, its hosting provider, or other services connected to the website.</p>
+            <p>These technologies may be used for things such as making the website work properly, remembering preferences, understanding basic website usage, or maintaining security.</p>
+            <p>The exact technologies used may change as the website develops.</p>
+            <p>You can also control or disable cookies through your browser settings, although doing so may affect how some websites function.</p>
+
+            <h2>14. Links to Other Websites</h2>
+            <p>This website may contain links to other websites or services.</p>
+            <p>If you click one of those links, you are leaving my website and entering a service that I do not control.</p>
+            <p>I am not responsible for how those third-party websites collect, use, or protect your information.</p>
+            <p>I recommend checking their privacy policies before providing them with personal information.</p>
+
+            <h2>15. Changes to This Privacy Policy</h2>
+            <p>I may update this Privacy Policy from time to time.</p>
+            <p>For example, I may update it if I introduce a new service, start using a new type of third-party tool, or need to reflect changes in applicable law.</p>
+            <p>When I make changes, I will update the “Last updated” date at the top of this page.</p>
+            <p>If a change is significant, I will take reasonable steps to make the change noticeable where appropriate.</p>
+
+            <h2>16. Contact Me</h2>
+            <p>If you have a question about this Privacy Policy, want to ask how your information is being handled, or want to exercise one of your privacy rights, you can contact me using the contact information provided on this website.</p>
+            
+            <p style="margin-top: 1.5rem; margin-bottom: 0;">
+                <strong>Mr. OddJobs</strong><br>
+                Website: <a href="https://bborngreat.github.io/mroddjobs/" target="_blank">Click Here</a><br>
+                Last updated: August 28, 2026
+            </p>
+        </div>
+
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a> | 
+            <a href="faq.html">FAQs</a> |
+            <a href="onboarding.html">Onboarding</a>
+            <p style="margin-top: 1rem;">Bright Borngreat &copy; <span id="current-year"></span>. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+
+        // Dynamic copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
