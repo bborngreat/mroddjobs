@@ -11,11 +11,11 @@
     <style>
         :root {
             --bg-color: #001A33;
-            --card-bg: rgba(0, 40, 80, 0.5); /* Lighter, milkier glass */
+            --card-bg: rgba(0, 40, 80, 0.5);
             --border-subtle: rgba(212, 175, 55, 0.12);
-            --border-highlight: rgba(212, 175, 55, 0.3); /* For top edge pop */
+            --border-highlight: rgba(212, 175, 55, 0.3);
             --text-primary: #EDEADE;
-            --text-muted: #BACEE9; /* Slightly brighter muted tone */
+            --text-muted: #BACEE9;
             --accent-gold: #D4AF37;
             --accent-gold-hover: #E5C158;
             --max-width: 720px;
@@ -29,7 +29,6 @@
 
         body {
             background-color: var(--bg-color);
-            /* Subtle geometric pattern overlay */
             background-image: 
                 linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
@@ -39,7 +38,7 @@
             line-height: 1.7;
             font-size: 1.1rem;
             overflow-x: hidden;
-            padding-top: 4px; /* Space for progress bar */
+            padding-top: 4px;
         }
 
         /* Top Scroll Progress Bar */
@@ -103,7 +102,6 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* Hamburger active animation state */
         .menu-container.active .hamburger-btn span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
         }
@@ -197,7 +195,7 @@
             font-weight: 300;
         }
 
-        /* Hero Graphic Circular Styling with Golden Outline */
+        /* Hero Graphic */
         .hero-graphic {
             margin: 0 auto 2rem auto;
             width: 160px;
@@ -213,7 +211,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 90%; /* Adjust vertical framing if needed to focus on your face */
+            object-position: center 90%;
             display: block;
         }
 
@@ -227,7 +225,7 @@
             margin: 3rem 0;
         }
 
-        /* Enhanced Button */
+        /* Button */
         .btn-gold {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-gold), #C19A2B);
@@ -250,7 +248,7 @@
             background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
         }
 
-        /* Supercharged Glassmorphism Cards */
+        /* Glassmorphism Cards */
         .glass-box {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -324,6 +322,96 @@
             margin-top: 5rem;
         }
 
+        /* ---- ACCORDION / DROPDOWN STYLES ---- */
+        .service-category {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .service-category:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .category-toggle {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding: 1.5rem 2rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .category-toggle:hover {
+            color: var(--accent-gold);
+        }
+
+        .category-toggle .category-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .category-toggle .chevron {
+            font-size: 1.2rem;
+            transition: transform 0.35s ease;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+
+        .service-category.open .category-toggle .chevron {
+            transform: rotate(180deg);
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s ease;
+            padding: 0 2rem;
+        }
+
+        .service-category.open .category-content {
+            max-height: 1200px;
+            padding: 0 2rem 2rem 2rem;
+        }
+
+        .category-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .category-content .example-label {
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .category-content ul.example-list {
+            margin-bottom: 0;
+        }
+
+        .category-content ul.example-list li {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .container {
@@ -337,6 +425,13 @@
             }
             h2 {
                 font-size: 2rem;
+            }
+            .category-toggle {
+                padding: 1.25rem 1.5rem;
+                font-size: 1.15rem;
+            }
+            .service-category.open .category-content {
+                padding: 0 1.5rem 1.5rem 1.5rem;
             }
         }
     </style>
@@ -368,11 +463,11 @@
             <div class="hero-graphic">
                 <img src="1788311590795.png" alt="Bright Borngreat Headshot">
             </div>
-            <h1>Got a boring job on your to-do list that you keep putting off?<br><span style="color: var(--text-primary); font-style: italic;">Give it to me.</span></h1>
-            <p class="lead">I'll handle the repetitive, tedious, and annoying digital tasks for you so you can spend your time on things that actually matter.</p>
+            <h1>Got a boring job on your to-do list that you keep procrastinating?<br><span style="color: var(--text-primary); font-style: italic;">Give it to me.</span></h1>
+            <p class="lead">Let me handle your repetitive, tedious, and annoying digital tasks for you, so you can enjoy your evenings and weekends in peace doing the things that actually matter to you.</p>
             
             <div class="cta-container">
-                <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">Give Me Your Boring Job</a>
+                <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
             </div>
         </div>
 
@@ -382,36 +477,76 @@
         <h2>What can I do?</h2>
         <p>Any creative or professional project you just won't enjoy doing yourself.</p>
 
-        <!-- Glass Box with Examples -->
-        <div class="glass-box">
-            <p style="font-weight: 600; color: var(--accent-gold); margin-bottom: 1.5rem; font-size: 1.2rem;">Examples:</p>
-            <ul class="example-list">
-                <li>Turning raw data into appealing and understandable spreadsheets</li>
-                <li>Transcribing audio or YouTube videos into clean, well formatted text</li>
-                <li>Translating text to French, Spanish, German and basically any language that uses the Latin ABCs.</li>
-                <li>Turning long articles or YouTube videos into condensed, actionable briefs and summaries of key points</li>
-                <li>Proofreading, editing, and formatting raw text into polished documents</li>
-                <li>Doing deep research on a topic and providing you with a detailed, comprehensive report</li>
-                <li>Building mini-web apps for boosting your productivity, tracking life events, or solving specific problems in your life</li>
-                <li>Plus many other boring chores that just aren't worth your time and mental energy.</li>
-            </ul>
+        <!-- Accordion: Data & Admin -->
+        <div class="service-category" id="cat-data">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">📋 Data & admin</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <p>I’ll handle all the messy data entry, data cleanup, and information gathering for you, so you don't waste your weekend doing it yourself.</p>
+                <p class="example-label">Examples:</p>
+                <ul class="example-list">
+                    <li>I can enter the raw data from a document, research paper, or presentation into a clean spreadsheet you can read and interpret easily</li>
+                    <li>If you've already got a messy, incomprehensible spreadsheet with the data, I add formulas, charts, and other enhancements to make it easy to understand and fun to use</li>
+                    <li>If you've got a topic you need to research, some suppliers you need to learn about, or some assignment you need deep context on, don't sweat it. Just give it to me. I'll do all the heavy digging, and give you a detailed report, comprehensive summary on my findings, or both (whichever you prefer).</li>
+                </ul>
+            </div>
         </div>
 
-        <h2>Not sure if I'll do it (or can do it)?</h2>
-        <p>So long as it's legal, ethical, reasonably simple, and can be done remotely, just send it to me. And I'll tell you immediately whether I can handle it or not.</p>
+        <!-- Accordion: Documents -->
+        <div class="service-category" id="cat-docs">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">📝 Documents</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <p>Anything involving clean, simple to read text documents, I'm your guy.</p>
+                <p class="example-label">Examples:</p>
+                <ul class="example-list">
+                    <li>If you've got a long audio, YouTube video, interview, or podcast, and you want to transcribe it into clean, well formatted text you can read instead, hit me up. Just shoot the link, or send me the media file, and I'll get straight to work.</li>
+                    <li>If you've got some text in English which you want to translate into French, Spanish, or German…. hit me up mon ami /mi amigo/mein Freund! And if you've got it in any of these languages and want to translate it into any of these languages (😂), I do that too! French to Spanish. German to English. And everything in between, I'm your guy. Just shoot the doc over, and I'll get it done in no time!</li>
+                    <li>Got a long article, interview, podcast, or YouTube video you just don't wanna read or watch, but still wanna know what it says? Don't sweat it. Just send the link. I'll sit through it, and present you with a condensed, actionable brief and summary of the key points.</li>
+                    <li>If you've got a document in serious need of some cleaning services, your prayers just got answered. Proofreading. Editing. Formatting. Inserting relevant graphics. I do it all. Give me the ugly, raw text, and receive a document that'll bring tears of joy into your eyes every time you open it!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Accordion: Small digital problems -->
+        <div class="service-category" id="cat-digital">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🛠 Small digital problems</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <p>Got a software itch you desperately need to scratch, but there just isn't an app that does it quite right for you? Let me BUILD ONE just for YOU!</p>
+                <p class="example-label">Examples:</p>
+                <ul class="example-list">
+                    <li>Want a custom habit or event tracker, with custom features you can't find anywhere? Just describe it to me in simple words, and I'll build it for you.</li>
+                    <li>Want your own mini-game which shows a cartoon face of you on the loading screen or homepage? Let's build it, impress your friends with it, and have fun with your loved ones playing a game with your name on it!</li>
+                    <li>Got any specific problems in your life that no tech billionaire has thought to build a gigantic app for? You don't have to wait anymore and keep suffering. Just send me what you want to see, and let's bring your vision to life today!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Don't see your task? -->
+        <h2>Don't see your task?</h2>
+        <p>Send it anyway. So long as it's legal, reasonably simple, and can be done digitally, it's probably something Mr. OddJobs can do.</p>
+        <p>So just send it to me.</p>
+        <p>And if I see it and it turns out it's something I can't handle, I'll tell you immediately so I don't waste your time.</p>
 
         <h2>Why am I doing this?</h2>
-        <p>Hi! My name is Bright Borngreat (Yes, it's my actual government name; blame my mom for that, not me). I'm 18 years old, and I recently finished high school.</p>
-        <p>But instead of rushing straight into college or getting a slave-wage job, I'm currently taking some time to figure out what comes next.</p>
-        <p>My essentials like food and shelter are covered by my mom (for now), but I need to cover my own internet and day-to-day expenses.</p>
+        <p>Hi! My name is Bright Borngreat (Yes, it's my actual government name; blame my mom for that, not me). I'm 18 years old, and I recently graduated from high school.</p>
+        <p>But instead of rushing straight into college or getting a slave-wage job, I'm currently taking some time —a gap year of sorts— to figure out what comes next.</p>
+        <p>My essentials like food and shelter are covered by my mom, but I need to cover my own internet bill and petty day-to-day expenses.</p>
         <p>So rather than go around begging for money, I figured I'd make myself useful instead.</p>
-        <p>I basically live on my phone, and as a result I've picked up a few relevant digital skills, tactics, shortcuts, and knowledge. Therefore I figured it wouldn't hurt to offer those skills to people who need them, in order to pay for my internet addiction and petty costs.</p>
-        <p>So here's my simple offer:<br>If you've got something tedious sitting on your to-do list, I'll use the digital acumen I’ve garnered over the last few years to do it for you.</p>
+        <p>I basically live on my phone, and as a result I've picked up a few relevant digital skills, shortcuts, and knowledge.</p>
+        <p>Therefore I figured it wouldn't hurt to offer those skills to people who need them, in order to pay for my internet addiction and petty costs.</p>
+        <p>So here's my simple offer:<br>If you've got something tedious sitting on your to-do list, I'll use the digital acumen I’ve built over the last few years to do it for you.</p>
 
         <!-- Popping Quote Card -->
         <div class="glass-box" style="text-align: center; border-color: var(--border-highlight);">
-            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">You get the annoying task off your plate and free up time to do more fun stuff with your days.</p>
-            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">And in return, I get paid a few pennies for the work.</p>
+            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">You get the annoying task off your plate and free up time to do more fun stuff with your day. And in return, I get paid a few pennies for the work.</p>
             <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent-gold); margin-top: 1.5rem; font-weight: 700;">It's a win-win for everyone!</p>
         </div>
 
@@ -435,13 +570,13 @@
         <!-- Closing CTA -->
         <div class="closing-section" id="checkout">
             <h2 style="border: none; margin-bottom: 1rem;">Super simple.</h2>
-            <p class="lead" style="margin-bottom: 2.5rem;">Enough yapping on this page. Click that button, and let's meet each other on the other side.</p>
+            <p class="lead" style="margin-bottom: 2.5rem;">Enough yapping on this page. Click that button, and let's meet on the other side.</p>
             <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
         </div>
 
     </div>
 
-    <!-- Vanilla JS for Scroll Progress Bar & Hamburger Dropdown -->
+    <!-- Vanilla JS for Scroll Progress Bar, Hamburger Dropdown & Accordions -->
     <script>
         // Scroll progress bar
         window.addEventListener('scroll', () => {
@@ -465,6 +600,32 @@
             if (menuContainer.classList.contains('active')) {
                 menuContainer.classList.remove('active');
             }
+        });
+
+        // Accordion functionality for service categories
+        document.querySelectorAll('.category-toggle').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const category = button.closest('.service-category');
+                const isOpen = category.classList.contains('open');
+
+                // Close all other open categories (optional - comment out to allow multiple open)
+                document.querySelectorAll('.service-category.open').forEach(openCat => {
+                    if (openCat !== category) {
+                        openCat.classList.remove('open');
+                        openCat.querySelector('.category-toggle').setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Toggle current
+                if (isOpen) {
+                    category.classList.remove('open');
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    category.classList.add('open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
         });
     </script>
 </body>
