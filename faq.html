@@ -108,9 +108,13 @@
         }
 
         .hero-graphic svg {
-            width: 40px;
-            height: 40px;
-            fill: var(--accent-gold);
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         @keyframes pulse-glow {
@@ -259,9 +263,10 @@
         
         <div class="hero-section">
             <div class="hero-graphic">
-                <!-- Clean, standard question mark SVG -->
+                <!-- Cleaner, thinner outlined question mark -->
                 <svg viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
                 </svg>
             </div>
             <h1>FREQUENTLY ASKED QUESTIONS</h1>
@@ -278,7 +283,7 @@
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>Yes. My actual legal name is Bright Borngreat. My ‘birth’ name is Mohammed Abubakr Sadiq. But I converted to Christianity very young (before I could even talk or crawl).</p>
+                        <p>Yes. My actual legal name is Bright Borngreat. My ‘birth’ name is Mohammed Abubakr Sadiq. But I converted to Christianity very young (basically before I could eat or crawl).</p>
                         <p>Bright Borngreat, therefore, was a name my mom adopted for me, and is not my father's name or his family name.</p>
                         <p>I still use my birth name as middle names, but for official purposes and simplicity, Bright Borngreat it is!</p>
                         <p>I know my name sounds like a pseudonym, but it's not.</p>
@@ -341,6 +346,21 @@
                         <p>As you can already tell, I'm a tiny, relatively slim one-man operation. And hence, I lack the sophisticated tech stack required to process stuff like refunds and cashbacks seamlessly and reliably.</p>
                         <p>That's why I have an explicit preview step, where I send you the full complete work to scrutinize and confirm satisfaction or ask for revisions before money ever exchanges hands.</p>
                         <p>That way, you do not pay until you're absolutely certain that you're getting exactly what you want to see.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>6. Where are you located?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>I'm based in Accra, Ghana — the sunny, chaotic, endlessly loud capital city where the internet is fast enough to keep me employed and the jollof is good enough to keep me alive.</p>
+                        <p>I work entirely online, so it doesn't really matter where you're reading this from. Whether you're in London, Lagos, New York, or somewhere I've never heard of, as long as you've got an internet connection and a boring task, we're good.</p>
+                        <p>So no, you don't need to be in Ghana to hire me. I'm basically a one-man digital ghost — location irrelevant, output what matters.</p>
                     </div>
                 </div>
             </div>
